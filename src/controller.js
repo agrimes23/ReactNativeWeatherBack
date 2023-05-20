@@ -1,5 +1,10 @@
+const pool = require('../../db.js');
+
 const getWeather = (req, res) => {
-    console.log("getting students")
+    pool.query("SELECT * FROM nativeweather", (error, results) => {
+        if(error) throw error;
+        res.status(200).json(results.rows);
+    })
 }
 
 module.exports = {
