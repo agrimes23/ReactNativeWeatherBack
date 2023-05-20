@@ -5,4 +5,6 @@ const router = Router()
 
 router.get('/', controller.getWeather)
 
+router.get('/:city', controller.getWeatherByCity);
+
 module.exports = router;
