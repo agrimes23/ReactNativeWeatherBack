@@ -19,6 +19,21 @@ const getWeatherByCity = (req, res) => {
     })
 }
 
+
+const addCity = (req, res) => {
+    const { city } = req.body;
+
+    //check if city exists already in db
+    pool.query(queries.checkCityExists, [city], (error, results) => {
+        if (results.row.length) {
+            res.send("This city already exists on the Dashboard")
+        }
+    })
+
+}
+
 module.exports = {
     getWeather,
+    getWeatherByCity,
+    addCity,
 }
