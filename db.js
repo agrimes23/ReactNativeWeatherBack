@@ -1,5 +1,6 @@
-const Pool = require('pg')
-import POSTGRES_PW from'dotenv'
+const pg = require('pg')
+const { Pool } = pg;
+const POSTGRES_PW = require('dotenv').config
 
 
 const pool = new Pool({
@@ -8,6 +9,6 @@ const pool = new Pool({
     database: "nativeweather", // need to set up database
     password: POSTGRES_PW,
     port: 5432,
-})
+});
 
 module.exports = pool;
