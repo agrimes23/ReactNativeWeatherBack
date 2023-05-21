@@ -27,7 +27,14 @@ const addCity = (req, res) => {
     pool.query(queries.checkCityExists, [city], (error, results) => {
         if (results.row.length) {
             res.send("This city already exists on the Dashboard")
-        }
+        } 
+
+        // add city to db
+        pool.query(queries.addCity, [city], (error, results) => {
+            if (error) throw error;
+            res.status(201).send("City saved successfully")
+            console.log("City created.")
+        })
     })
 
 }
