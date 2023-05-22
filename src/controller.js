@@ -5,6 +5,7 @@ const queries = require('./queries.js')
 // getting data from nativeweather database
 const getWeather = (req, res) => {
     pool.query(queries.getWeather, (error, results) => {
+        console.log("HEY it's hitting the backend")
         if(error) throw error;
         res.status(200).json(results.rows);
     })
@@ -27,7 +28,6 @@ const getWeatherByCity = (req, res) => {
         res.status(200).json(results.rows);
     })
 }
-
 
 const addCity = (req, res) => {
     const {cityName} = req.body;

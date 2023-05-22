@@ -7,7 +7,7 @@ const pool = new Pool({
     user: "postgres",
     host: "localhost",
     database: "nativeweather",
-    password: POSTGRES_PW,
+    password: "",
     port: 5432,
 });
 
