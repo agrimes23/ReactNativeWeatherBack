@@ -65,7 +65,10 @@ const removeCityWeather = (req, res) => {
             res.send("City does not exist in database.")
         }
         
-
+        pool.query(queries.removeCityWeather, [id], (error, results) => {
+            if(error) throw error;
+            res.status(200).send("City removed successfully.")
+        })
         
     })
 }
