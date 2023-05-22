@@ -6,7 +6,7 @@ const POSTGRES_PW = require('dotenv').config
 const pool = new Pool({
     user: "postgres",
     host: "localhost",
-    database: "nativeweather", // need to set up database
+    database: "nativeweather",
     password: POSTGRES_PW,
     port: 5432,
 });

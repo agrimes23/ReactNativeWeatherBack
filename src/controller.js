@@ -21,16 +21,21 @@ const getWeatherByCity = (req, res) => {
 
 
 const addCity = (req, res) => {
-    const { city } = req.body;
+    const {cityName} = req.body;
+
+    console.log("Req.body " + cityName)
 
     //check if city exists already in db
-    pool.query(queries.checkCityExists, [city], (error, results) => {
-        if (results.row.length) {
+    pool.query(queries.checkCityExists, [cityName], (error, results) => {
+
+        if(error) throw error
+
+        if (results.rows.length) {
             res.send("This city already exists on the Dashboard")
         } 
 
         // add city to db
-        pool.query(queries.addCity, [city], (error, results) => {
+        pool.query(queries.addCity, [cityName], (error, results) => {
             if (error) throw error;
             res.status(201).send("City saved successfully")
             console.log("City created.")
